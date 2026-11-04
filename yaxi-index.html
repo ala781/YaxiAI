@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="ku" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#0b0712">
+<title>Yaxi AI</title>
+<style>
+:root{color-scheme:dark}*{box-sizing:border-box}
+body{margin:0;background:#0b0712;color:#f7f2ff;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;min-height:100vh}
+header{padding:20px 18px;background:#171023;border-bottom:1px solid #342346;display:flex;align-items:center;gap:12px}
+.logo{width:42px;height:42px;border-radius:14px;background:linear-gradient(135deg,#b56cff,#6135a5);display:grid;place-items:center;font-size:23px}
+h1{font-size:21px;margin:0;color:#d9baff}header small{display:block;color:#a99bb8;margin-top:3px}
+main{max-width:760px;margin:auto;padding:18px 14px 112px}
+#chat{display:flex;flex-direction:column;gap:12px}
+.msg{max-width:88%;padding:13px 15px;border-radius:17px;line-height:1.8;white-space:pre-wrap;overflow-wrap:anywhere}
+.bot{background:#21182d;border:1px solid #382747;align-self:flex-start;border-bottom-right-radius:5px}
+.user{background:#58348a;align-self:flex-end;border-bottom-left-radius:5px}
+.hint{color:#a99bb8;text-align:center;font-size:13px;margin:18px 0}
+form{position:fixed;bottom:0;left:0;right:0;padding:12px max(12px,calc((100vw - 760px)/2));background:#120d1c;border-top:1px solid #342346;display:flex;gap:9px}
+input{min-width:0;flex:1;background:#21182d;color:#fff;border:1px solid #49345c;border-radius:14px;padding:14px;font-size:16px;outline:none}
+input:focus{border-color:#b56cff}
+button{border:0;border-radius:14px;background:#9a5be0;color:white;font-weight:700;padding:0 19px;font-size:15px}
+button:active{transform:scale(.98)}
+</style>
+</head>
+<body>
+<header><div class="logo">⚡</div><div><h1>YAXI AI</h1><small>یاریدەدەری تایبەتی تۆ</small></div></header>
+<main><div id="chat"><div class="msg bot">سڵاو! من Yaxi ـم 💜\nئێستا وەشانی سەرەتاییم. دەتوانیت پرسیارم لێ بکەیت.</div></div><div class="hint">Yaxi AI · وەشانی سەرەتایی</div></main>
+<form id="form"><input id="message" autocomplete="off" placeholder="نامەکەت بنووسە..." aria-label="نامەکەت"><button type="submit">ناردن</button></form>
+<script>
+const chat=document.getElementById('chat'), input=document.getElementById('message');
+function reply(q){
+ const s=q.toLowerCase();
+ if(s.includes('سڵاو')||s.includes('slaw')) return 'سڵاو! چۆنی؟ چۆن یارمەتیت بدەم؟ 💜';
+ if(s.includes('پایتۆن')||s.includes('python')) return 'Python زمانێکی پرۆگرامسازییە. دەتوانین هەنگاو بە هەنگاو فێری ببین.';
+ if(s.includes('ناوت')||s.includes('name')) return 'ناوم Yaxi AI ـە! ⚡';
+ if(s.includes('سوپاس')||s.includes('thanks')) return 'بەخێربێیت! هەر کاتێک پێویستت بوو لێرەم.';
+ if(s.includes('exit')) return 'بەخێر بێیتەوە! 💜';
+ return 'پرسیارەکەت وەرگرت. من هێشتا وەشانی سەرەتاییم و وەڵامی هەموو پرسیارێک نازانم. بۆ زیرەکی ڕاستەقینە دواتر پێویستمان بە مۆدێلی AI و سێرڤەر دەبێت.';
+}
+document.getElementById('form').addEventListener('submit',e=>{
+ e.preventDefault();const q=input.value.trim();if(!q)return;
+ const u=document.createElement('div');u.className='msg user';u.textContent=q;chat.appendChild(u);
+ const a=document.createElement('div');a.className='msg bot';a.textContent=reply(q);chat.appendChild(a);
+ input.value='';window.scrollTo(0,document.body.scrollHeight);
+});
+</script>
+</body></html>
