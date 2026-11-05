@@ -123,7 +123,9 @@ form.addEventListener("submit",async function(e){
  }catch(error){
   a.textContent="ببورە! پەیوەندی بە Yaxi نەکرا. تکایە دووبارە هەوڵ بدەوە.";
  }
-
+} catch(error) {
+  a.textContent = "هەڵەی ڕاستەقینە: " + error.message;
+}
  send.disabled=false;
  input.focus();
  window.scrollTo(0,document.body.scrollHeight);
