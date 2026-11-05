@@ -120,11 +120,11 @@ form.addEventListener("submit",async function(e){
 
   a.textContent=data.answer||"وەڵام نەدراوە";
 
- }catch(error){
+ }catch(error){j} catch(error) {
+  a.textContent = "هەڵەی ڕاستەقینە: " + error.message;
+}
   a.textContent="ببورە! پەیوەندی بە Yaxi نەکرا. تکایە دووبارە هەوڵ بدەوە.";
  }
-} catch(error) {
-  a.textContent = "هەڵەی ڕاستەقینە: " + error.message;
 }
  send.disabled=false;
  input.focus();
