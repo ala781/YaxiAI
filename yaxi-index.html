@@ -166,7 +166,7 @@ form.addEventListener("submit", async (event) => {
     const data = await response.json();
 
     loading.textContent =
-    data.answer || "ببورە، وەڵامێکم نییە."
+    data.answer
 
   } catch (error) {
     loading.textContent =
